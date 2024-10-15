@@ -92,19 +92,20 @@ After passing readiness check, Lambda Web Adapter will start Lambda Runtime and 
 
 The readiness check port/path and traffic port can be configured using environment variables. These environment variables can be defined either within docker file or as Lambda function configuration.
 
-| Environment Variable                                         | Description                                                                          | Default    |
-|--------------------------------------------------------------|--------------------------------------------------------------------------------------|------------|
-| AWS_LWA_PORT / PORT*                                         | traffic port                                                                         | "8080"     |
-| AWS_LWA_READINESS_CHECK_PORT / READINESS_CHECK_PORT*         | readiness check port, default to the traffic port                                    | PORT       |
-| AWS_LWA_READINESS_CHECK_PATH / READINESS_CHECK_PATH*         | readiness check path                                                                 | "/"        |
-| AWS_LWA_READINESS_CHECK_PROTOCOL / READINESS_CHECK_PROTOCOL* | readiness check protocol: "http" or "tcp", default is "http"                         | "http"     |
-| AWS_LWA_READINESS_CHECK_MIN_UNHEALTHY_STATUS                 | The minimum HTTP status code that is considered unhealthy                            | "500"      |
-| AWS_LWA_ASYNC_INIT / ASYNC_INIT*                             | enable asynchronous initialization for long initialization functions                 | "false"    |
-| AWS_LWA_REMOVE_BASE_PATH / REMOVE_BASE_PATH*                 | the base path to be removed from request path                                        | None       |
-| AWS_LWA_ENABLE_COMPRESSION                                   | enable gzip compression for response body                                            | "false"    |
-| AWS_LWA_INVOKE_MODE                                          | Lambda function invoke mode: "buffered" or "response_stream", default is "buffered"  | "buffered" |
-| AWS_LWA_PASS_THROUGH_PATH                                    | the path for receiving event payloads that are passed through from non-http triggers | "/events"  |
-| AWS_LWA_AUTHORIZATION_SOURCE                                 | a header name to be replaced to `Authorization` | None  |
+| Environment Variable                                         | Description                                                                                | Default    |
+|--------------------------------------------------------------|--------------------------------------------------------------------------------------------|------------|
+| AWS_LWA_PORT / PORT*                                         | traffic port                                                                               | "8080"     |
+| AWS_LWA_READINESS_CHECK_PORT / READINESS_CHECK_PORT*         | readiness check port, default to the traffic port                                          | PORT       |
+| AWS_LWA_READINESS_CHECK_PATH / READINESS_CHECK_PATH*         | readiness check path                                                                       | "/"        |
+| AWS_LWA_READINESS_CHECK_PROTOCOL / READINESS_CHECK_PROTOCOL* | readiness check protocol: "http" or "tcp", default is "http"                               | "http"     |
+| AWS_LWA_READINESS_CHECK_MIN_UNHEALTHY_STATUS                 | The minimum HTTP status code that is considered unhealthy                                  | "500"      |
+| AWS_LWA_ASYNC_INIT / ASYNC_INIT*                             | enable asynchronous initialization for long initialization functions                       | "false"    |
+| AWS_LWA_REMOVE_BASE_PATH / REMOVE_BASE_PATH*                 | the base path to be removed from request path                                              | None       |
+| AWS_LWA_ENABLE_COMPRESSION                                   | enable gzip compression for response body                                                  | "false"    |
+| AWS_LWA_INVOKE_MODE                                          | Lambda function invoke mode: "buffered" or "response_stream", default is "buffered"        | "buffered" |
+| AWS_LWA_PASS_THROUGH_PATH                                    | the path for receiving event payloads that are passed through from non-http triggers       | "/events"  |
+| AWS_LWA_AUTHORIZATION_SOURCE                                 | a header name to be replaced to `Authorization`                                            | None  |
+| AWS_LWA_PROXY_LAMBDA_RUNTIME_API                             | overwrites `AWS_LAMBDA_RUNTIME_API` to allow proxying request (not affecting registration) | None  |
 
 > **Note:**
 > We use "AWS_LWA_" prefix to namespacing all environment variables used by Lambda Web Adapter. The original ones will be supported until we reach version 1.0.
